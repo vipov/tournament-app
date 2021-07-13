@@ -1,39 +1,584 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+
+*{
+  margin: 0;
+  padding: 0;
+  /* overflow: hidden; */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background: #0e101c;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+    color: whitesmoke;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
+:root {
+  --primaryColor: #af9a7d;
+  /* --mainWhite: #fff;
+  --offWhite: #f7f7f7;
+  --mainBlack: #222;
+  --mainGrey: #ececec;
+  --darkGrey: #cfcfcf; */
+  --mainWhite: rgb(0, 255, 136);
+  --offWhite: #0b37b3;
+  --mainBlack: rgb(146, 38, 189);
+  --mainGrey: #00ff00;
+  --darkGrey: #0f75e9;
+  /* --mainRed: #85153e;
+  --hoverRed: #bf1650; */
+  --mainRed: #32a6bc;
+  --hoverRed: #4cc6dd;
+  --testGold: #ffd900;
+  --mainBlue: #0886ba;
+  --mainTransition: all 0.3s linear;
+  --mainSpacing: 3px;
+  --lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
+  --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
 }
 
-.App-header {
-  min-height: 100vh;
+.app {
+  /* border: 2px solid var(--mainWhite); */
   display: flex;
   flex-direction: column;
+  height: 100vh;
+}
+
+.main-header{
+  font-size: 2rem;
+  justify-content: center;
+  display: flex;
+}
+.create-tournament-form{
+/* border: 2px solid var(--offWhite); */
+width: 95vw;
+margin: 0 auto;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(590px, 0.5fr));
+grid-row-gap: 2rem;
+grid-column-gap: 40px;
+height: 85vh;
+}
+
+.left-side-of-form{
+/* border: 2px solid var(--mainBlack); */
+height: 85vh;
+}
+
+.right-side-of-form{
+/* border: 2px solid var(--mainGrey); */
+height: 85vh;
+}
+
+.show-teams{
+/* border: 2px solid var(--offWhite); */
+/* background-color: rgba(0, 44, 148, 0.486); */
+overflow-y: scroll;
+overflow-x: hidden;
+height: 60%;
+border-bottom: 1px solid rgb(79, 98, 148);
+}
+
+.window-with-teams{
+/* border: 2px solid var(--mainWhite) */
+}
+
+
+.show-prizes{
+  /* border: 2px solid var(--offWhite); */
+  /* background-color: rgb(5, 147, 43); */
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 40%;
+}
+
+.name-and-fee{
+/* border: 2px solid var(--darkGrey); */
+/* background-color: rgb(107, 107, 0); */
+height: 15%;
+border-bottom: 1px solid rgb(79, 98, 148);
+padding-bottom: 15px;
+}
+
+.select-team{
+/* border: 2px solid var(--darkGrey); */
+/* background-color: rgb(0, 26, 68); */
+overflow-y: scroll;
+overflow-x: hidden;
+height: 70%;
+}
+
+.create-prize-button{
+  height: 15%;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  display: flex;
+ }
+
+.button-text {
+  font-size: 0.7rem
 }
 
-.App-link {
-  color: rgb(112, 76, 182);
+.bottom-part{
+  height: 15vh;
+  /* border: 2px solid orange; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 95vw;
+  margin: 0 auto;
 }
 
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+.bottom-part > .bottom-button{
+  width: 1000px;
+  height: 50px;
+}
+
+.line {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.center-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.teams{
+  display: flex;
+  flex-direction: column;
+  height: 60%;
+  /* overflow-y: scroll; */
+}
+
+.create-prize{
+  /* position: absolute;
+  bottom: 0px;
+  right: 50px;
+  background-color: whitesmoke;
+  width: 40%;
+  height: 40%;
+  max-width: 500px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px; */
+}
+
+.create-team{
+  /* position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center; */
+  /* box-shadow: 6px 6px 17px 2px #bf1650; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  
+  padding: .8em 1.2em;
+  color: white;
+  /* background-color: darkcyan; */
+  transform: translate(-50%, -50%);
+  
+  background-color: whitesmoke;
+  /* width: 40%;
+  height: 40%; */
+  /* max-width: 500px; */
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) .3s;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 800px;
+}
+.create-team:hover{
+  box-shadow: 6px 6px 17px 2px var(--hoverRed);
+}
+
+.line-center{
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  text-transform: capitalize;
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+
+.error{
+  color: red;
+}
+
+h1 {
+  font-weight: 100;
+  color: white;
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(79, 98, 148);
+}
+
+.form {
+  background: #0e101c;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+team line > p {
+  color: red;
+}
+
+team line > p::before {
+  display: inline;
+  content: "⚠ ";
+}
+
+input {
+  display: block;
+  /* display: flex; */
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid white;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+label {
+  line-height: 2;
+  text-align: left;
+  display: block;
+  margin-bottom: 13px;
+  margin-top: 20px;
+  color: white;
+  font-size: 14px;
+  font-weight: 200;
+}
+
+button[type="submit"],
+input[type="submit"] {
+  /* #ec5990 */
+  background: var(--mainRed);
+  color: white;
+  text-transform: uppercase;
+  border: none;
+  margin-top: 40px;
+  padding: 20px;
+  font-size: 16px;
+  font-weight: 100;
+  letter-spacing: 10px;
+}
+input[type="submit"]:hover{
+  /* background: #ec5990; */
+  background: var(--hoverRed);
+  cursor: pointer;
+  transition: all 0.7s all 0.7s cubic-bezier(0.38, 0.21, 0.13, 0.76);
+}
+button:hover {
+  background: var(--hoverRed);
+  cursor: pointer;
+  color: #0e101c;
+  font-weight: 100;
+  transition: all 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+/* button[type="submit"]:hover,
+input[type="submit"]:hover {
+  background: #bf1650;
+} */
+
+button[type="submit"]:active,
+input[type="button"]:active,
+input[type="submit"]:active {
+  transition: 0.3s all;
+  transform: translateY(3px);
+  border: 1px solid transparent;
+  opacity: 0.8;
+}
+
+input:disabled {
+  opacity: 0.4;
+}
+
+input[type="button"]:hover {
+  transition: 0.3s all;
+}
+
+button[type="submit"],
+input[type="button"],
+input[type="submit"] {
+  -webkit-appearance: none;
+}
+
+button[type="button"] {
+  display: block;
+  appearance: none;
+  background: #333;
+  color: white;
+  border: none;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+pre {
+  color: white;
+}
+
+hr {
+  margin-top: 30px;
+}
+
+button {
+  display: block;
+  appearance: none;
+  /* margin-top: 40px; */
+  border: 1px solid #333;
+  /* margin-bottom: 20px; */
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+form > h1 {
+  color: black
+}
+
+.nav-icon {
+  color: var(--hoverRed);
+}
+.nav-icon:hover{
+  color: #ec5990;
+  cursor: pointer;
+}
+
+.button-and-close-icon{
+  display: flex;
+  align-items: flex-start;
+}
+/* .line-align-right{
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+} */
+
+.team-field{
+  cursor: pointer;
+  border-bottom: 1px solid rgb(79, 98, 148);
+  border-radius: 2px;
+  height: 10px;
+  width: 150px;
+  background: var(--mainRed);
+  color: white;
+  text-transform: uppercase;
+  margin: 2px;
+  font-size: 1.2rem;
+  padding: 10px;
+  font-weight: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.breclet{
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  height: 50px;
+}
+
+.tournament-ladder{
+display: flex;
+flex-direction: column;
+height: 100vh;
+flex-direction: column;
+position: relative;
+overflow: hidden;
+}
+
+.brecklets{
+  /* display: flex;
+  justify-content: flex-end;
+  margin: auto 0; */
+  display: flex;
+    /* justify-content: flex-end; */
+  margin: auto auto;
+  flex-direction: row-reverse;
+}
+.brecklets > *:nth-child(1) {
+transform: translate(-200px, 0px);
+}
+
+.brecklets > *:nth-child(2) {
+  /* transform: translate(-20px, -100px); */
+  transform: translate(-320px, -100px);
+}
+.brecklets > *:nth-child(3) {
+  /* transform: translate(130px, 100px); */
+  transform: translate(-170px, 100px);
+}
+.brecklets > *:nth-child(4) {
+  /* transform: translate(108px, -164px); */
+  transform: translate(-350px, -164px)
+}
+.brecklets > *:nth-child(5) {
+  /* transform: translate(259px, -37px); */
+  transform: translate(-200px, -37px);
+}
+.brecklets > *:nth-child(6) {
+  /* transform: translate(411px, 51px); */
+  transform: translate(-50px, 51px);
+}
+.brecklets > *:nth-child(7) {
+  /* transform: translate(563px, 164px); */
+  transform: translate(100px, 164px)
+}
+
+.brecklets > *:last-child{
+  /* display: none; */
+  position: relative;
+}
+
+.arrow {
+  height: 10%;
+  width: 10%;
+  position: absolute;
+  transform: translate(411px, 168px);
+  /* background-color: coral; */
+}
+.arrow::after{
+  display: inline;
+  content: "fgdgdfg ";
+}
+
+.hidden-submit{
+  display: none;
+}
+
+
+.pin{
+  position: relative;
+  bottom: 15px;
+  left: 62px;
+  color: white;
+  transform: translate(11px, 30px);
+  z-index: 999;
+}
+
+.result-chit {
+  color: black;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.2rem;
+}
+.result-chit:hover{
+  transition: 0.5s all;
+  transition-timing-function: ease;
+  border: none;
+  color: black;
+}
+
+.tournament-ladder > .result-chits {
+  position: absolute;
+  right: 150px;
+  top: 100px;
+}
+/* .result-chit:nth-child(3){
+  height: 175px;
+  width: 175px;
+  position: absolute;
+  right: 150px;
+  top: 150px;
+} */
+
+/* .result-chit:nth-child(2){
+  height: 150px;
+  width: 150px;
+} */
+ 
+/* .result-chit:nth-child(1){
+  height: 150px;
+  width: 150px;
+} */
+.result-chit {
+  height: 175px;
+  width: 175px;
+}
+.result-chits {
+  display: flex;
+  flex-direction: column;
+}
+.result-chits::before {
+  content: "";
+  position: absolute;
+  background: var(--mainRed);
+  width: 115%;
+  height: 110%;
+  filter: blur(57px);
+  transition: all 0.5s;
+}
+.result-chits:hover::before {
+  content: "";
+  position: absolute;
+  background: whitesmoke;
+  width: 115%;
+  height: 110%;
+  filter: blur(57px);
+  transition: all 0.5s;
+}
+.result-chit:nth-child(even) {
+  transform: rotate(-5deg) translateY(0px);
+  box-shadow: 11px 11px 0 rgba(0,0,0,0.1);
+  background: #ffff93;
+}
+
+.result-chit:nth-child(odd) {
+  transform: rotate(4deg) translateY(0px);
+  /* background: linear-gradient(to right, rgba(224,224,224,0.102) 10%, #f6f3f3 100%); */
+  box-shadow: 16px -5px 0 rgba(0,0,0,0.1);
+  background: #ffff93;
+}
+
+.create-prize-form{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  
+  padding: .8em 1.2em;
+  color: white;
+  /* background-color: darkcyan; */
+  transform: translate(-50%, -50%);
+  
+  background-color: whitesmoke;
+  /* width: 40%;
+  height: 40%; */
+  /* max-width: 500px; */
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) .3s;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 800px;
+  color: black
+}
+
+.create-prize-form:hover{
+  box-shadow: 6px 6px }
+  
+.input-and-description {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
+.blurred-background{
+  background: #0b37b3;
+  width: 100%;
+  height: 100%;
+}
+
+.align-right{
+  display: flex;
+  justify-content: flex-end;
+}
+.communicate {
+  text-transform: capitalize;
 }
